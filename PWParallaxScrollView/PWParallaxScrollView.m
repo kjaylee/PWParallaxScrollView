@@ -96,6 +96,16 @@ static const NSInteger PWInvalidPosition = -1;
 
 #pragma mark - public method
 
+
+- (void)setShowsHorizontalScrollIndicator:(BOOL)isShow {
+    for (int i = 0; i < [self.subviews count]; i++) {
+        UIView *subView = [self.subviews objectAtIndex:i];
+        if ([subView isKindOfClass:[UIScrollView class]]) {
+            [(UIScrollView*)subView setShowsHorizontalScrollIndicator:isShow];
+        }
+    }
+}
+
 - (void)moveToIndex:(NSInteger)index
 {
     CGFloat newOffsetX = index * CGRectGetWidth(_touchScrollView.frame);

@@ -20,6 +20,7 @@
 
 @property (nonatomic, assign) NSInteger maxAllowableItem;
 
+- (void)setShowsHorizontalScrollIndicator:(BOOL)isShow;
 - (void)prevItem;
 - (void)nextItem;
 - (void)moveToIndex:(NSInteger)index;
