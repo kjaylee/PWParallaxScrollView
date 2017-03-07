@@ -20,6 +20,10 @@
 
 @property (nonatomic, assign) NSInteger maxAllowableItem;
 
+@property (nonatomic, strong) UIScrollView *touchScrollView;
+@property (nonatomic, strong) UIScrollView *foregroundScrollView;
+@property (nonatomic, strong) UIScrollView *backgroundScrollView;
+
 - (void)setShowsHorizontalScrollIndicator:(BOOL)isShow;
 - (void)prevItem;
 - (void)nextItem;
@@ -44,6 +48,7 @@
 - (void)parallaxScrollView:(PWParallaxScrollView *)scrollView didChangeIndex:(NSInteger)index;
 - (void)parallaxScrollView:(PWParallaxScrollView *)scrollView didEndDeceleratingAtIndex:(NSInteger)index;
 - (void)parallaxScrollView:(PWParallaxScrollView *)scrollView didRecieveTapAtIndex:(NSInteger)index;
+- (void)parallaxScrollViewDidScroll:(PWParallaxScrollView *)scrollView;
 
 @end
 

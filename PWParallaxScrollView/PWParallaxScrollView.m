@@ -16,9 +16,6 @@ static const NSInteger PWInvalidPosition = -1;
 @property (nonatomic, assign) NSInteger backgroundViewIndex;
 @property (nonatomic, assign) NSInteger userHoldingDownIndex;
 
-@property (nonatomic, strong) UIScrollView *touchScrollView;
-@property (nonatomic, strong) UIScrollView *foregroundScrollView;
-@property (nonatomic, strong) UIScrollView *backgroundScrollView;
 
 @property (nonatomic, strong) UIView *currentBottomView;
 
@@ -304,6 +301,10 @@ static const NSInteger PWInvalidPosition = -1;
         if([self.delegate respondsToSelector:@selector(parallaxScrollView:didChangeIndex:)]){
             [self.delegate parallaxScrollView:self didChangeIndex:self.currentIndex];
         }
+    }
+    
+    if([self.delegate respondsToSelector:@selector(parallaxScrollViewDidScroll:)]){
+        [self.delegate performSelector:@selector(parallaxScrollViewDidScroll:) withObject:self];
     }
 }
 
