@@ -17,6 +17,7 @@ static const NSInteger PWInvalidPosition = -1;
 @property (nonatomic, assign) NSInteger userHoldingDownIndex;
 
 
+@property (nonatomic, strong) UIScrollView *currentTopView;
 @property (nonatomic, strong) UIView *currentBottomView;
 
 @property (nonatomic, assign) NSInteger currentIndex;
@@ -183,12 +184,18 @@ static const NSInteger PWInvalidPosition = -1;
     if (index < 0 || index >= _numberOfItems) {
         return nil;
     }
-    
     UIView *view = [self.dataSource backgroundViewAtIndex:index scrollView:self];
     [view setFrame:CGRectMake(index * CGRectGetWidth(self.frame), 0, CGRectGetWidth(self.frame), CGRectGetHeight(self.frame))];
     [view setTag:index];
     
-    return view;
+    UIScrollView *scrollView = [[UIScrollView alloc] initWithFrame:view.frame];
+    [scrollView addSubview:view];
+    [scrollView setTag:index];
+    
+    scrollView.backgroundColor = [UIColor redColor];
+    view.frame = scrollView.bounds;
+    
+    return scrollView;
 }
 
 - (void)loadForegroundViewAtIndex:(NSInteger)index
@@ -202,20 +209,24 @@ static const NSInteger PWInvalidPosition = -1;
 {
     [[_backgroundScrollView subviews] makeObjectsPerformSelector:@selector(removeFromSuperview)];
     
-    UIView *newTopView = [self backgroundViewAtIndex:index];
-    [_backgroundScrollView addSubview:newTopView];
+    self.currentTopView = (UIScrollView*)[self backgroundViewAtIndex:index];
+    [_backgroundScrollView addSubview:_currentTopView];
 }
 
 - (void)determineBackgroundView:(float)offsetX
 {
     CGFloat newCenterX = 0;
+    CGFloat newTopOffsetX = 0;
     NSInteger newBackgroundViewIndex = 0;
     NSInteger midPoint = CGRectGetWidth(self.frame) * _userHoldingDownIndex;
+    //float viewOffsetX = offsetX - midPoint;
+    
     
     if (offsetX < midPoint) {
         //moving from left to right
         
         newCenterX = (CGRectGetWidth(self.frame) * _userHoldingDownIndex - offsetX) / 2;
+        newTopOffsetX =  (midPoint - offsetX) /2.0f ;
         newBackgroundViewIndex = _userHoldingDownIndex - 1;
     }
     else if (offsetX > midPoint) {
@@ -225,10 +236,13 @@ static const NSInteger PWInvalidPosition = -1;
         CGFloat rightSplitWidth = CGRectGetWidth(self.frame) - leftSplitWidth;
         
         newCenterX = rightSplitWidth / 2 + leftSplitWidth;
+        newTopOffsetX = (offsetX - midPoint) / - 2.0f  ;
         newBackgroundViewIndex = _userHoldingDownIndex + 1;
     }
     else {
         newCenterX = CGRectGetWidth(self.frame) / 2 ;
+        newTopOffsetX = 0.0f ;
+        
         newBackgroundViewIndex = _backgroundViewIndex;
     }
     
@@ -248,6 +262,10 @@ static const NSInteger PWInvalidPosition = -1;
     
     CGPoint center = CGPointMake(newCenterX, CGRectGetHeight(self.frame) / 2);
     self.currentBottomView.center = center;
+    CGPoint topOffset = CGPointMake(newTopOffsetX , 0.0f);
+    self.currentTopView.contentOffset = topOffset;
+    
+    
 }
 
 - (NSInteger)backgroundViewIndexFromOffset:(CGPoint)offset

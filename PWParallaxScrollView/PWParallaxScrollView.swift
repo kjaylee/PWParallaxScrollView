@@ -230,6 +230,8 @@ public class PWParallaxScrollView: UIView, UIScrollViewDelegate {
         
         let center: CGPoint = CGPointMake(newCenterX, CGRectGetHeight(self.frame) / 2);
         currentBottomView?.center = center;
+        UIView currentView = backgroundViewAtIndex(userHoldingDownIndex)
+        currentView?.center = center;
     }
     
     private func backgroundViewIndexFromOffset(offset: CGPoint) -> Int {

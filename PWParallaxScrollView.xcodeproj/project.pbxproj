@@ -217,6 +217,7 @@
 						CreatedOnToolsVersion = 7.3;
 					};
 					F497D91817DC93EF007DE2EC = {
+						DevelopmentTeam = 2P8KHA329M;
 						LastSwiftMigration = 0820;
 					};
 				};
@@ -444,6 +445,7 @@
 		F497D94017DC93F0007DE2EC /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				DEVELOPMENT_TEAM = 2P8KHA329M;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "PWParallaxScrollViewExample/PWParallaxScrollView-Prefix.pch";
 				HEADER_SEARCH_PATHS = (
@@ -462,6 +464,7 @@
 		F497D94117DC93F0007DE2EC /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				DEVELOPMENT_TEAM = 2P8KHA329M;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "PWParallaxScrollViewExample/PWParallaxScrollView-Prefix.pch";
 				HEADER_SEARCH_PATHS = (
