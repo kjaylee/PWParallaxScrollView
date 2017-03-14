@@ -30,6 +30,9 @@
 - (void)moveToIndex:(NSInteger)index;
 - (void)reloadData;
 
+- (UIView *)foregroundViewAtIndex:(NSInteger)index;
+- (UIView *)backgroundViewAtIndex:(NSInteger)index;
+
 @end
 
 @protocol PWParallaxScrollViewDataSource <NSObject>

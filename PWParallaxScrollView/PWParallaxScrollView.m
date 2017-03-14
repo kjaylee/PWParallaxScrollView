@@ -15,12 +15,12 @@ static const NSInteger PWInvalidPosition = -1;
 @property (nonatomic, assign) NSInteger numberOfItems;
 @property (nonatomic, assign) NSInteger backgroundViewIndex;
 @property (nonatomic, assign) NSInteger userHoldingDownIndex;
+@property (nonatomic, assign) NSInteger currentIndex;
 
 
 @property (nonatomic, strong) UIScrollView *currentTopView;
 @property (nonatomic, strong) UIView *currentBottomView;
 
-@property (nonatomic, assign) NSInteger currentIndex;
 
 - (void)touchScrollViewTapped:(id)sender;
 
@@ -322,7 +322,7 @@ static const NSInteger PWInvalidPosition = -1;
     }
     
     if([self.delegate respondsToSelector:@selector(parallaxScrollViewDidScroll:)]){
-        [self.delegate performSelector:@selector(parallaxScrollViewDidScroll:) withObject:self];
+        [self.delegate performSelector:@selector(parallaxScrollViewDidScroll:) withObject:scrollView];
     }
 }
 
