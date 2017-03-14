@@ -16,6 +16,8 @@
 @property (nonatomic, assign) IBOutlet id<PWParallaxScrollViewDelegate> delegate;
 @property (nonatomic, assign) IBOutlet id<PWParallaxScrollViewDataSource> dataSource;
 @property (nonatomic, readonly) NSInteger currentIndex;
+@property (nonatomic, assign) NSInteger backgroundViewIndex;
+@property (nonatomic, assign) NSInteger userHoldingDownIndex;
 @property (nonatomic, assign) UIEdgeInsets foregroundScreenEdgeInsets;
 
 @property (nonatomic, assign) NSInteger maxAllowableItem;
