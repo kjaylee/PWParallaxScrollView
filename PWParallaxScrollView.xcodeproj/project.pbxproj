@@ -216,6 +216,9 @@
 					F431D3901C65DE7E009F5851 = {
 						CreatedOnToolsVersion = 7.3;
 					};
+					F497D91817DC93EF007DE2EC = {
+						LastSwiftMigration = 0820;
+					};
 				};
 			};
 			buildConfigurationList = F497D91417DC93EF007DE2EC /* Build configuration list for PBXProject "PWParallaxScrollView" */;
@@ -451,6 +454,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
 				PRODUCT_BUNDLE_IDENTIFIER = "wpsteak.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -468,6 +472,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
 				PRODUCT_BUNDLE_IDENTIFIER = "wpsteak.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
